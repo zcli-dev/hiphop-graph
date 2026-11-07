@@ -1,0 +1,65 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Hip-Hop Connections</title>
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+  <header>
+    <h1>Hip-Hop Connections</h1>
+    <p class="intro">Explore how hip-hop artists are connected through the songs they share and the groups they belong to.</p>
+
+    <div class="tools">
+      <section class="card">
+        <h2>Find similar artists</h2>
+        <p class="help">Type an artist you like. You'll see who they've worked with, and other artists who work with many of the same people.</p>
+        <form id="related-form">
+          <input id="artist-one" list="artist-names" placeholder="An artist you like" autocomplete="off" required>
+          <button type="submit">Find similar</button>
+        </form>
+      </section>
+
+      <section class="card">
+        <h2>How are two artists connected?</h2>
+        <p class="help">Pick two artists to see the shortest chain of connections between them.</p>
+        <form id="path-form">
+          <input id="path-a" list="artist-names" placeholder="First artist" autocomplete="off" required>
+          <input id="path-b" list="artist-names" placeholder="Second artist" autocomplete="off" required>
+          <button type="submit">Connect</button>
+        </form>
+      </section>
+    </div>
+
+    <datalist id="artist-names"></datalist>
+    <p id="result" role="status">Loading data...</p>
+    <ul id="chain" class="chain" hidden></ul>
+  </header>
+
+  <section id="lists" hidden>
+    <div>
+      <h2>Worked with</h2>
+      <ol id="direct-list"></ol>
+    </div>
+    <div>
+      <h2>Similar artists</h2>
+      <ol id="similar-list"></ol>
+    </div>
+  </section>
+
+  <p id="legend" class="legend" hidden>
+    <span style="--c: var(--accent)">Selected artist</span>
+    <span style="--c: var(--blue)">Worked with</span>
+    <span style="--c: var(--green)">Similar</span>
+  </p>
+
+  <div id="graph"></div>
+
+  <footer>
+    Data from <a href="https://musicbrainz.org">MusicBrainz</a> (CC0). Connections come from group memberships and shared song credits. The data is incomplete, so some results will look odd.
+  </footer>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/cytoscape/3.30.2/cytoscape.min.js"></script>
+  <script src="app.js"></script>
+</body>
+</html>
